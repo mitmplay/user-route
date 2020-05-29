@@ -12,12 +12,10 @@ routes = {
   url: 'https://google.com/search?q=github+playwright',
   html: {
     'www.google.com/search': {
-      el: 'e_end', //or e_head
-      js: [googlJS, hello], //JS at end of html body
+      el: 'e_end', //JS at end of 
+      js: [googlJS, hello], //html body
     },
   },
-  js: {
-    'gstatic.com': ''
-  }
+  js: {'gstatic.com': ''}
 }
 global.mitm.fn.routeSet(routes, domain, true)
