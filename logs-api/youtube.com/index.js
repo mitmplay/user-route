@@ -1,14 +1,5 @@
 const domain =  __dirname.split(/\\|\//).pop();
 
-const headerCSP = function({headers}) {
-  const val = ' blob: ws://localhost:3000 ';
-  const csp = headers['content-security-policy'];
-  if (csp) {
-    headers['content-security-policy'] = csp[0].replace(/ blob: /g, val);
-  }
-  return {headers};
-};
-
 const unregisterJS = function() {
   document.addEventListener('DOMContentLoaded', (event) => {
     setTimeout(() => {
@@ -27,27 +18,17 @@ const {
 } = mitm.fn;
 
 const routes = {
-  title: 'Twitter - twitter',
-  url: 'https://www.twitter.com/search?q=covid&src=typed_query',
+  title: 'Youtube - twitter',
+  url: 'https://www.youtube.com',
   mock: {
-    'mitm-play/twitter.js': {
+    'mitm-play/youtube.js': {
       js: [unregisterJS],
     },
   },
   cache: {
-    'video.twimg.com': {
-      contentType: ['mpegURL', 'MP2T'],
-      resp: html5vid,
-    },
-  },
-  log: {
-    'api.twitter.com': {contentType: ['json']},
-  },  
-  html: {
-    'twimg.com': 0,
-    'twitter.com': {
-      resp: headerCSP,
-      src:['twitter.js'],
+    'googlevideo.com': {
+      contentType: ['mp4', 'webm'],
+      hashQstring: true,
     },
   },
 }
