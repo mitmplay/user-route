@@ -21,10 +21,7 @@ const unregisterJS = function() {
   })
 };
 
-const {
-  routeSet,
-  html5vid,
-} = mitm.fn;
+const {html5vid} = mitm.fn;
 
 const routes = {
   title: 'Twitter - twitter',
@@ -41,7 +38,9 @@ const routes = {
     },
   },
   log: {
-    'api.twitter.com': {contentType: ['json']},
+    'api.twitter.com': {
+      contentType: ['json']
+    },
   },  
   html: {
     'twimg.com': 0,
@@ -53,5 +52,4 @@ const routes = {
 }
 
 global.mitm.fn.routeSet(routes, domain, true)
-// global.mitm.fn.routeSet({css: {'.*': 0}}, 'default', true)
 //mitm-play twi --chromium='D:\Apps\chrome-gog\chrome.exe' -cspr='.'
