@@ -9,8 +9,10 @@ const resp = function({body}) {
 routes = {
   title: 'Amazon - amazon',
   url:  'https://www.amazon.com/b?node=229189',
-  log:  {'amazon.com': {contentType}},
-  html: {'www.amazon.com':    {resp}},
-  js:   {'amazon-adsystem.com':   ''},
+  sshot: 'button[type=submit],a[role=button]',
+  cache: {'amazon.com': {contentType: ['javascript']}},
+  log:   {'amazon.com': {contentType}},
+  html:  {'www.amazon.com':    {resp}},
+  js:    {'amazon-adsystem.com':   ''},
 }
 global.mitm.fn.routeSet(routes, domain, true)

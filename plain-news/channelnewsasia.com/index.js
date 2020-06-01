@@ -6,6 +6,8 @@ const css = `
 }`
 
 routes = {
+  title: 'Channel News Asia - channelnewsasia',
+  url: 'https://www.channelnewsasia.com/',  
   html: {'facebook.com':       ''},
   css:  {'styles.css': `=>${css}`},
   js: {

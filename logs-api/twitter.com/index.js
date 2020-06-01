@@ -26,12 +26,17 @@ const {html5vid} = mitm.fn;
 const routes = {
   title: 'Twitter - twitter',
   url: 'https://www.twitter.com/search?q=covid&src=typed_query',
+  sshot: 'button[type=submit],a[role=button]',
   mock: {
     'mitm-play/twitter.js': {
       js: [unregisterJS],
     },
   },
   cache: {
+    // 'abs.twimg.com': {
+    //   contentType: ['javascript'], // cache invalid
+    //   hashQstring: true,
+    // },
     'video.twimg.com': {
       contentType: ['mpegURL', 'MP2T'],
       resp: html5vid,
