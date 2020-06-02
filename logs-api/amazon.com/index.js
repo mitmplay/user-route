@@ -9,7 +9,10 @@ const resp = function({body}) {
 routes = {
   title: 'Amazon - amazon',
   url:  'https://www.amazon.com/b?node=229189',
-  sshot: 'button[type=submit],a[role=button]',
+  screenshot: {
+    selector: 'button[type=submit],a',
+    at: 'sshot',
+  },
   cache: {'amazon.com': {contentType: ['javascript']}},
   log:   {'amazon.com': {contentType}},
   html:  {'www.amazon.com':    {resp}},
