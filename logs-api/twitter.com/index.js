@@ -21,7 +21,40 @@ const unregisterJS = function() {
   })
 };
 
-const {html5vid} = mitm.fn;
+let debunk;
+let urlList = [];
+function html5vid({url}, fn) {
+  if (url.match(/.ts$/)) {
+    urlList.push(url.replace(/https:\//, `${mitm.home}/cache`));
+    debunk && clearTimeout(debunk);
+    debunk = setTimeout(function() {
+      clearTimeout(debunk);
+      const files = urlList;
+      urlList = [];
+      const arr = files[0].match(/(\d+)\/(pu\/vid|vid)/);
+      if (fs.existsSync(`${arr[1]}.mp4`)) {
+        return;
+      }
+      if (arr && arr[1]) {
+        const tsList = [];
+        for (let file of files) {
+          if (file.match(arr[1])) {
+            tsList.push(`file '${file}'`);
+          }
+        }
+        fs.writeFileSync(`${arr[1]}.txt`, tsList.join('\n'));
+        execFile('ffmpeg', `-f concat -safe 0 -i ${arr[1]}.txt -c copy ${arr[1]}.ts`.split(' '), () => {
+          execFile('ffmpeg', `-i ${arr[1]}.ts -acodec copy -vcodec copy ${arr[1]}.mp4`.split(' '), () => {
+            fs.remove(`${arr[1]}.txt`);
+            fs.remove(`${arr[1]}.ts`);
+            fn && fn();
+          });
+        });
+        //console.log(arr);
+      }
+    }, 1500)
+  }
+}
 
 const routes = {
   title: 'Twitter - twitter',
