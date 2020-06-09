@@ -71,7 +71,7 @@ const routes = {
   cache: {
     'abs.twimg.com': {
       contentType: ['javascript'],
-      hashQstring: true,
+      querystring: true,
     },
     'video.twimg.com': {
       contentType: ['mpegURL', 'MP2T'],

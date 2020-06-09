@@ -28,7 +28,7 @@ const routes = {
   cache: {
     'googlevideo.com': {
       contentType: ['mp4', 'webm'],
-      hashQstring: true,
+      querystring: true,
     },
   },
 }
