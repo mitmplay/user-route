@@ -1,6 +1,4 @@
-const domain =  __dirname.split(/\\|\//).pop();
-
-routes = {
+const route = {
   mock: {'2mdn.net': ''},
 }
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;

@@ -1,5 +1,3 @@
-const domain =  __dirname.split(/\\|\//).pop();
-
 const unregisterJS = function() {
   document.addEventListener('DOMContentLoaded', (event) => {
     setTimeout(() => {
@@ -17,7 +15,7 @@ const {
   html5vid,
 } = mitm.fn;
 
-const routes = {
+const route = {
   title: 'Youtube - twitter',
   url: 'https://www.youtube.com',
   mock: {
@@ -32,7 +30,6 @@ const routes = {
     },
   },
 }
-
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;
 // global.mitm.fn.routeSet({css: {'.*': 0}}, 'default', true)
 //mitm-play twi --chromium='D:\Apps\chrome-gog\chrome.exe' -cspr='.'

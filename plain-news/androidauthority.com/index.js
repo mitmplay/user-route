@@ -1,5 +1,3 @@
-const domain =  __dirname.split(/\\|\//).pop();
-
 const androidAuthJS = function() {
   const c = q=>document.querySelectorAll(q).forEach(n=>n.remove());
   c('.aa_srma_container.shortcodes_wrapper');
@@ -34,7 +32,7 @@ a[href="#polls"],
   background-color: white !important;
 }\n`;
 
-routes = {
+const route = {
   title: 'Androidauthority - androidauthority',
   url: 'https://www.androidauthority.com/',
   headers: {
@@ -64,4 +62,4 @@ routes = {
     'gleam.io':             '',
   },
 }
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;

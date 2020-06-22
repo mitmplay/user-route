@@ -1,5 +1,3 @@
-const domain =  __dirname.split(/\\|\//).pop();
-
 const css = `
 .c-entry-hero__meta,
 .l-col__sidebar,
@@ -8,7 +6,7 @@ const css = `
   display: none !important;
 }\n`;
 
-routes = {
+const route = {
   title: 'The Verge - theverge',
   url: 'https://www.theverge.com/',
   css: {'theverge.com': `=>${css}`},  
@@ -23,4 +21,4 @@ routes = {
     '3lift.com': '',
   },
 }
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;

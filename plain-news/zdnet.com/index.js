@@ -1,5 +1,3 @@
-const domain =  __dirname.split(/\\|\//).pop();
-
 const css = `
 .col-8.module.featuredStories,
 [data-component="medusaAsync"],
@@ -18,12 +16,12 @@ const css = `
   margin-top: 0 !important;
 }`;
 
-routes = {
+const route = {
   title: 'Developer - zdnet',
   url: 'https://www.zdnet.com/topic/developer/',
   html: {
     // relax CSP rules
-    'zdnet.com': {resp: mitm.fn.unstrictCSP}
+    'zdnet.com': {response: mitm.fn.unstrictCSP}
   },  
   skip: [
     // skip error `request back` to browser to handle it
@@ -42,4 +40,4 @@ routes = {
     'google.com': '',
   },
 }
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;

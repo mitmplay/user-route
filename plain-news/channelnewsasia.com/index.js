@@ -1,11 +1,9 @@
-const domain =  __dirname.split(/\\|\//).pop();
-
 const css = `
 [data-css='c-advertisement'] {
   display: none !important;
 }`
 
-routes = {
+const route = {
   title: 'Channel News Asia - channelnewsasia',
   url: 'https://www.channelnewsasia.com/',  
   html: {'facebook.com':       ''},
@@ -21,4 +19,4 @@ routes = {
     'demdex.net': '',
   },
 }
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;

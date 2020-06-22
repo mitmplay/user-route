@@ -1,5 +1,3 @@
-const domain =  __dirname.split(/\\|\//).pop();
-
 css = `
 article>strong,
 .adsbygoogle,
@@ -7,7 +5,7 @@ article>strong,
   display: none !important;
 }`
 
-routes = {
+const route = {
   title: 'Phoronix - phoronix',
   url:  'https://www.phoronix.com/scan.php?page=phoronix_articles',
   skip: ['ad.doubleclick.net/ddm/'     ],
@@ -15,4 +13,4 @@ routes = {
   html: {'doubleclick.net':          ''},
   css:  {'phoronix.com':     `=>${css}`},  
 }
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;

@@ -1,11 +1,9 @@
-const domain =  __dirname.split(/\\|\//).pop();
-
 const css = `
 .ad--mid-content {
   display: none !important;
 }\n`;
 
-routes = {
+const route = {
   title: 'Wired - wired',
   url: 'https://www.wired.com/',
   html: {
@@ -35,4 +33,4 @@ routes = {
     'outbrain.com': '',
   },
 }
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;

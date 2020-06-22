@@ -7,7 +7,7 @@ const googlJS = function() {
 const domain =  __dirname.split(/\\|\//).pop();
 const {hello} = global.mitm.fn;
 
-routes = {
+const route = {
   title: 'Search - google',
   url: 'https://google.com/search?q=github+playwright',
   html: {
@@ -18,4 +18,4 @@ routes = {
   },
   js: {'gstatic.com': ''}
 }
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;

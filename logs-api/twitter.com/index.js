@@ -1,5 +1,3 @@
-const domain =  __dirname.split(/\\|\//).pop();
-
 const headerCSP = function({headers}) {
   const val = ' blob: ws://localhost:3000 ';
   const csp = headers['content-security-policy'];
@@ -56,7 +54,7 @@ function html5vid({url}, fn) {
   }
 }
 
-const routes = {
+const route = {
   title: 'Twitter - twitter',
   url: 'https://www.twitter.com/search?q=covid&src=typed_query',
   screenshot: {
@@ -75,7 +73,7 @@ const routes = {
     },
     'video.twimg.com': {
       contentType: ['mpegURL', 'MP2T'],
-      resp: html5vid,
+      response: html5vid,
     },
   },
   log: {
@@ -86,11 +84,10 @@ const routes = {
   html: {
     'twimg.com': 0,
     'twitter.com': {
-      resp: headerCSP,
+      response: headerCSP,
       src:['twitter.js'],
     },
   },
 }
-
-global.mitm.fn.routeSet(routes, domain, true)
+module.exports = route;
 //mitm-play twi --chromium='D:\Apps\chrome-gog\chrome.exe' -cspr='.'
